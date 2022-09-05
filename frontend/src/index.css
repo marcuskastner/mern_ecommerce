@@ -18,6 +18,7 @@ main {
 .btn-primary {
   background-color: #f0c040;
   color: #000;
+  border-color: #c0c0c0;
 }
 .products {
   display: flex;
@@ -26,7 +27,7 @@ main {
 }
 
 .product {
-  border: 1px #404040 solid;
+  border: 1px #c0c0c0 solid;
   margin: 1rem;
 }
 
