@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Rating from './Rating';
@@ -7,6 +7,7 @@ import { Store } from '../Store';
 import axios from 'axios';
 
 export const Product = ({ product }) => {
+  const navigate = useNavigate();
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const {
     cart: { cartItems },
@@ -24,6 +25,7 @@ export const Product = ({ product }) => {
       type: 'CART_ADD_ITEM',
       payload: { ...item, quantity },
     });
+    navigate('/cart');
   };
 
   return (

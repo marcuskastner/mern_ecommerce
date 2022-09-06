@@ -98,6 +98,11 @@ const CartScreen = () => {
                   </Row>
                 </ListGroup.Item>
               ))}
+              <div className="my-3">
+                <Link to="/">
+                  <Button>Continue Shopping</Button>
+                </Link>
+              </div>
             </ListGroup>
           )}
         </Col>
