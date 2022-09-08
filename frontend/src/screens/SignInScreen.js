@@ -20,6 +20,7 @@ export default function SigninScreen() {
 
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const { userInfo } = state;
+
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
