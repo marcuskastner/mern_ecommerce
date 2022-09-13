@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useContext, useEffect, useReducer } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
@@ -27,10 +27,11 @@ const reducer = (state, action) => {
   }
 };
 
-const ProductScreen = () => {
+function ProductScreen() {
   const navigate = useNavigate();
   const params = useParams();
   const { slug } = params;
+
   const [{ loading, error, product }, dispatch] = useReducer(reducer, {
     product: [],
     loading: true,
@@ -65,7 +66,6 @@ const ProductScreen = () => {
     });
     navigate('/cart');
   };
-
   return loading ? (
     <LoadingBox />
   ) : error ? (
@@ -140,6 +140,5 @@ const ProductScreen = () => {
       </Row>
     </div>
   );
-};
-
+}
 export default ProductScreen;

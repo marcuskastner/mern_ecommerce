@@ -7,7 +7,7 @@ import MessageBox from '../components/MessageBox';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 export default function CartScreen() {
@@ -28,13 +28,8 @@ export default function CartScreen() {
       payload: { ...item, quantity },
     });
   };
-
   const removeItemHandler = (item) => {
-    console.log(item);
-    ctxDispatch({
-      type: 'CART_REMOVE_ITEM',
-      payload: item,
-    });
+    ctxDispatch({ type: 'CART_REMOVE_ITEM', payload: item });
   };
 
   const checkoutHandler = () => {
@@ -68,21 +63,21 @@ export default function CartScreen() {
                     </Col>
                     <Col md={3}>
                       <Button
-                        variant="light"
-                        disabled={item.quantity === 1}
                         onClick={() =>
                           updateCartHandler(item, item.quantity - 1)
                         }
+                        variant="light"
+                        disabled={item.quantity === 1}
                       >
                         <i className="fas fa-minus-circle"></i>
                       </Button>{' '}
                       <span>{item.quantity}</span>{' '}
                       <Button
                         variant="light"
-                        disabled={item.quantity === item.countInStock}
                         onClick={() =>
                           updateCartHandler(item, item.quantity + 1)
                         }
+                        disabled={item.quantity === item.countInStock}
                       >
                         <i className="fas fa-plus-circle"></i>
                       </Button>
@@ -90,8 +85,8 @@ export default function CartScreen() {
                     <Col md={3}>${item.price}</Col>
                     <Col md={2}>
                       <Button
-                        variant="light"
                         onClick={() => removeItemHandler(item)}
+                        variant="light"
                       >
                         <i className="fas fa-trash"></i>
                       </Button>
@@ -118,8 +113,8 @@ export default function CartScreen() {
                     <Button
                       type="button"
                       variant="primary"
-                      disabled={cartItems.length === 0}
                       onClick={checkoutHandler}
+                      disabled={cartItems.length === 0}
                     >
                       Proceed to Checkout
                     </Button>
